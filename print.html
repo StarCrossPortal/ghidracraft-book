@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">1.</strong> Chapter 1</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/ollvm_deflatten.html"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li></ol></li><li class="chapter-item expanded "><a href="internals.html"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -144,7 +144,207 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="chapter-1"><a class="header" href="#chapter-1">Chapter 1</a></h1>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This book is part of the <a href="https://github.com/StarCrossPortal/bincraft">bincraft</a> project.
+In this book, we will be talking about the <a href="https://github.com/StarCrossPortal/ghidracraft">ghidracraft</a> project, which is a forked version of Ghidra.</p>
+<p>The topics covered in this book including:</p>
+<ul>
+<li>Our version of vanilla Ghidra docs: you can see this as just an unofficial documentation. Note that this won't be finished soon. see <a href="./vanilla_ghidra.html">Vanilla Ghidra</a></li>
+<li>Documentation about the ghidracraft changes: fixings, features, design of those fixing and features. see <a href="./ghidracraft_changes.html">Ghidracraft Changes</a></li>
+<li>Documentation on Ghidra internals: to help people join the development quicker. see <a href="./internals.html">internals</a></li>
+</ul>
+<p>Till now, Ghidracraft is not officially released yet. The nightly build is still in progress, and should be released shortly.</p>
+<p>If you like what we did and want to test those changes, you can always use the nightly build.
+But you have to make sure you are OK with those bugs.</p>
+<p>If you encounter any bugs that we introduce, we are happy to have you <a href="https://github.com/StarCrossPortal/ghidracraft/issues">firing issues</a> about we should do next.</p>
+<h2 id="compatibility-issue"><a class="header" href="#compatibility-issue">Compatibility Issue</a></h2>
+<p>The rule of thumb is to allow any ghidra user to move to Ghidracraft without breaking things.
+But it is not the other way around.</p>
+<p>If you do import a project from Vanilla Ghidra, you may never get it back.
+Currently, only pcode patch does that.</p>
+<p>If you have serious problem about the compatibility with vanilla Ghidra, <a href="https://github.com/StarCrossPortal/ghidracraft/discussions">please let us know</a>.
+The project is not yet fixed, so we are quite open.
+If you do have many occasions that you need total forward compatibility, we might consider trying harder to achieve that.</p>
+<p>But for now, it is a non-goal.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="unofficial-vanilla-ghidra-documentation"><a class="header" href="#unofficial-vanilla-ghidra-documentation">Unofficial Vanilla Ghidra Documentation</a></h1>
+<p>This chapter talks about our understanding of using the vanilla ghidra.</p>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ghidracraft-changes"><a class="header" href="#ghidracraft-changes">Ghidracraft changes</a></h1>
+<p>In this chapter, we will talk about our modifications to Ghidra, what should they influence, how can we use them, etc.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ghidracraft-dark-theme"><a class="header" href="#ghidracraft-dark-theme">Ghidracraft Dark Theme</a></h1>
+<p>Ghidracraft has dark theme on by default, but if you want to change the theme, you can always go to the option for Ghidra and change it.</p>
+<p>The name of the dark theme is called <code>FlatDarcula</code>, one of the theme provided by <a href="https://www.formdev.com/flatlaf/">FlatLaf</a>.</p>
+<h2 id="change-the-theme"><a class="header" href="#change-the-theme">Change The Theme</a></h2>
+<p>To change the theme, you can go to the main window, goto <code>edit -&gt; Tool Options</code>:</p>
+<p><img src="ghidracraft_changes/./img/dark_theme_main.png" alt="dark theme main window" /></p>
+<p>Then go to the Tool tab:</p>
+<p><img src="ghidracraft_changes/./img/dark_theme_option.png" alt="dark theme option" /></p>
+<p>FlatDarcula is the name of our theme.</p>
+<p>You can also choose other theme here.
+But some of the colors might not work under other themes.
+It is possible that you cannot see the characters.</p>
+<p>To fix that, you will need to change some of the colors in the properties file.
+Check out <a href="ghidracraft_changes/./color_configuration.html">color configuration</a> for more information.</p>
+<h2 id="what-changed"><a class="header" href="#what-changed">What changed?</a></h2>
+<p>Some show cases, if any of you cares.</p>
+<ul>
+<li>Button shadow is now in modern style</li>
+</ul>
+<p><img src="ghidracraft_changes/./img/button_shadow.png" alt="button shadow" /></p>
+<ul>
+<li>More flattened stylings</li>
+</ul>
+<p><img src="ghidracraft_changes/./img/flatten.png" alt="./img/flatten.png" /></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="color-congiguration-support"><a class="header" href="#color-congiguration-support">Color Congiguration Support</a></h1>
+<h2 id="extra-color-configure"><a class="header" href="#extra-color-configure">Extra Color Configure</a></h2>
+<p>A new file is added to the final distribution: <code>GHIDRACRAFT_INSTALLATION/support/Color.properties</code>.</p>
+<p>In this file, internal colors are defined, and the ghidra should follow this file to get the color.</p>
+<p>Currently, not all colors are defined there, so still not all colors are configurable.
+All the colors that are configurable is already listed in this file.</p>
+<p>If you encounter any color that is not yet configurable but really harms your eyes, feel free to <a href="https://github.com/StarCrossPortal/ghidracraft/issues">fire an issue</a>.</p>
+<h3 id="syntax"><a class="header" href="#syntax">Syntax</a></h3>
+<ul>
+<li>Any line starts with &quot;#&quot; is considered comment:</li>
+</ul>
+<pre><code># this is a comment
+</code></pre>
+<ul>
+<li>Colors are defined as a single line: <code>name = #RGB</code>, for example:</li>
+</ul>
+<pre><code>Highlight.Global = #569cd6
+</code></pre>
+<p>There's nothing special about the &quot;.&quot; (dot). The configuration treats that just part of the name.
+When ghidra wants some color, it will look after this name. The dot is just for better categorizing the color names.</p>
+<ul>
+<li>The colors are possible to be referenced, in a form like <code>${referenced color name}</code>, for example:</li>
+</ul>
+<pre><code>Highlight.Default = ${White}
+</code></pre>
+<p>By default, a <code>Color.properties</code> file is already provided.</p>
+<p><strong>Ghidracraft cannot work without a <code>Color.properties</code> file</strong>.</p>
+<h3 id="desired-usage"><a class="header" href="#desired-usage">Desired Usage</a></h3>
+<p>This feature is designed to be used for those theme authors.
+When somebody is willing to add a theme to Ghidracraft, by adding an extension (Java swing themes can be carried within a Ghidra extension) <strong>and</strong> a <code>Color.properties</code> file.</p>
+<p>So, a user of this custom theme can just load the extension, swith the theme, replace the <code>Color.properties</code> file, and everything will be just fine.</p>
+<p>However, this is not the case for current Ghidra because of the hardcoded colors within project.
+That's why we have this feature.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pcode-patch"><a class="header" href="#pcode-patch">Pcode Patch</a></h1>
+<p>Pcode patching is about modifying the pcode generated by Ghidra in the first place.</p>
+<p>By modifying those, you are able to introduce your own semantic without changing any
+of the actual bytes which is required when patching with assemblies.</p>
+<p>Current pcode patching can be used both with or without UI.</p>
+<h2 id="with-ui"><a class="header" href="#with-ui">With UI</a></h2>
+<p>First, you need to enable the pcode display. This can be done by:</p>
+<ol>
+<li>open up &quot;edit the listing fields&quot;</li>
+</ol>
+<p><img src="ghidracraft_changes/./img/edit_listing_fields.png" alt="open listing fields" /></p>
+<ol start="2">
+<li>select <code>Instruction/Data</code>, double click <code>PCode</code> field.</li>
+</ol>
+<p><img src="ghidracraft_changes/./img/enable_pcode.png" alt="enable pcode" /></p>
+<ol start="3">
+<li>Close the &quot;editing the listing fields&quot; by click that button again. (the button in step 1)</li>
+</ol>
+<p>It's recommended to enable raw pcode format when displaying. When patching, this
+is the only acceptable format (at least for now.)</p>
+<p>This can be done in:</p>
+<p><code>Edit</code> -&gt; <code>Tool Options</code> -&gt; <code>Listing Fields</code> -&gt; <code>Pcode Field</code> -&gt; <code>Display Raw Pcode</code></p>
+<p>Enable it.</p>
+<p>To patch the IR, you can right click on any pcode you'd like to:</p>
+<ul>
+<li>modify</li>
+<li>insert before</li>
+<li>insert after</li>
+<li>remove</li>
+</ul>
+<p><img src="ghidracraft_changes/./img/pcode_menu.png" alt="pcode patch menu" /></p>
+<p>After click the one you want, you might get a new window poping up for exact pcode you want (except for remove).</p>
+<p>Input the pcode instruction in raw format. The format is:</p>
+<ul>
+<li>Varnode: <code>(space_name, offset, size)</code>. For example, <code>(register, 0, 0)</code></li>
+<li>Pcode: <code>output_varnode = OPCODE INPUT_VARNODE1, INPUT_VARNODE2, ...</code>. For example, <code>(unique, 0, 8) = INT_ADD (unique, 8, 8), (const, 8, 8)</code>.</li>
+</ul>
+<p>The <code>unique</code> space is normally used for temporary vars. Opcode should be in uppercase (we might also allow lower case as well in the future).</p>
+<p>The full list of the opcode can be refer to the <a href="https://ghidra.re/courses/languages/html/pcoderef.html">ghidra's official pcode reference</a>.</p>
+<h2 id="without-ui"><a class="header" href="#without-ui">Without UI</a></h2>
+<p>You can also use pcode patching with script. To do this, what you need:</p>
+<ol>
+<li>get the instruction you wish to patch.</li>
+<li>construct the <code>RawPcode</code> array, which can be both the original pcode or the pcode you specify yourself. Also,
+you might find <code>PcodeRawParser</code> useful to generate <code>RawPcode</code>.</li>
+<li>call <code>inst.patchPcode(array_of_raw_pcode)</code> to patch it.</li>
+</ol>
+<p>Note that the patched pcode is correspond to the instruction. That means, once the instruction is undefined,
+the pcode you patched is gone as well.</p>
+<p>An example of Jython script of patch the pcode:</p>
+<pre><code class="language-Python">from array import *
+from ghidra.program.model.pcode import RawPcode, RawPcodeImpl, PcodeOp, Varnode, PcodeRawParser
+
+address_factory = currentProgram.getAddressFactory()
+inst = getInstructionAt(address_factory.getAddress('0x101001'))
+# Goal: patch pcode `(unique, 0, 8) = COPY (const, 8, 8)` to this instruction
+
+# option 1: construct raw pcode yourself
+unique_space = address_factory.getAddressSpace('unique')
+const_space = address_factory.getAddressSpace('const')
+
+inputs = array(Varnode, [Varnode(const_space.getAddress('0x8'), 8)]) # inputs -&gt; (const, 8, 8)
+output = Varnode(unique_space.getAddress('0x0', 8)) # output -&gt; (unique, 0, 8). This can also be None, for example in BRANCH opcode.
+pcode = RawPcodeImpl(PcodeOp.COPY, inputs, output)
+patch_pcode = array(RawPcode, [pcode]) # we need an array to patch
+inst.patchPcode(pcode) # patch the pcode! Note that this will TOTALLY OVERRIDE that instruction's pcode.
+
+# option 2: use the parser, so we can use the same syntax as with UI
+patch_pcode = PcodeRawParser.parseRawPcode(address_factory, '(unique, 0, 8) = COPY (const, 8, 8)')
+inst.patchPcode(pcode)
+</code></pre>
+<h2 id="database-issue"><a class="header" href="#database-issue">Database Issue</a></h2>
+<p>After patching, the patched pcode is going to be recorded in the database.
+If you send the database to other people (well, he/she has to use Ghidracraft as well, not vanilla Ghidra), the patched pcode should be remained.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<h3 id="brainfuck-decompiltion"><a class="header" href="#brainfuck-decompiltion">Brainfuck Decompiltion</a></h3>
+<p>TODO</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ollvm-deflatten-script"><a class="header" href="#ollvm-deflatten-script">OLLVM Deflatten Script</a></h1>
+<p><a href="https://github.com/obfuscator-llvm/obfuscator">OLLVM</a> is a commonly used compiler-level
+obfuscation technique.
+One of the core feature is called control flow flattenning which adjusts the basic blocks
+within a single function to make the decompiled result highly verbose.</p>
+<p>OLLVM works on different architectures as it reuses <a href="https://llvm.org/">LLVM</a> compiler
+framework which in turn works on different architectures.</p>
+<p>By using <a href="ghidracraft_changes/./pcode_patch.html">pcode patching feature</a>, we have achieved half-automatically
+OLLVM control flow flattenning deobfuscation.</p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<h3 id="step-1-find-the-script"><a class="header" href="#step-1-find-the-script">Step 1: find the script.</a></h3>
+<p>Open up the script manager, search for <code>ollvm_de_flattening.py</code> script.</p>
+<h3 id="step-2-find-the-initial-block-id-number-a-magic-number"><a class="header" href="#step-2-find-the-initial-block-id-number-a-magic-number">Step 2: find the initial block id number (a magic number)</a></h3>
+<p>For each program obfuscated with OLLVM control flow flattening, a bunches of magic numbers
+are used to indicate which block is to execute next.</p>
+<p>This step requires you to highlight out (by click mouse left-button on the number) the
+first magic number.</p>
+<p>Normally the magic number will appear above the beginning of the loop.</p>
+<p><img src="ghidracraft_changes/./img/ollvm_magic_number_choose.png" alt="ollvm_choose_magic number" /></p>
+<h3 id="step-3-run-the-script"><a class="header" href="#step-3-run-the-script">Step 3: run the script</a></h3>
+<p>By double clicking the script, it should deobfuscate the control flow flatening.</p>
+<h2 id="supported-architectures"><a class="header" href="#supported-architectures">Supported Architectures</a></h2>
+<table><thead><tr><th>Arch Names</th><th>Support</th></tr></thead><tbody>
+<tr><td>x86</td><td>✔️</td></tr>
+<tr><td>x86-64</td><td>✔️</td></tr>
+<tr><td>arm</td><td>✔️</td></tr>
+<tr><td>aarch64</td><td>✔️</td></tr>
+<tr><td>mips64</td><td>✔️</td></tr>
+<tr><td>ppc64-le</td><td>✔️</td></tr>
+</tbody></table>
+<h2 id="note"><a class="header" href="#note">Note</a></h2>
+<ul>
+<li>This only works for OLLVM, not any control flow flattening scheme.</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="shorter-decompiled-variable-names"><a class="header" href="#shorter-decompiled-variable-names">Shorter Decompiled Variable Names</a></h1>
+<p>By default, Ghidra has a verbose name generated for decompiled code.</p>
+<p>To use shorter names, you can enable this by: <code>Edit -&gt; Tool Options -&gt; Decompiler -&gt; Analysis -&gt; Short variable names</code>.</p>
+<p>This option is not enabled by default.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ghidra-internals"><a class="header" href="#ghidra-internals">Ghidra Internals</a></h1>
+<p>TODO</p>
 
                     </main>
 

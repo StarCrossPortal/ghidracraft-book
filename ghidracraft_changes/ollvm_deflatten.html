@@ -3,9 +3,8 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title></title>
-                        <base href="/">
-        
+        <title>OLLVM Deflatten Script - GhidraCraft Book</title>
+                
 
         <!-- Custom HTML head -->
         
@@ -15,21 +14,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="favicon.svg">
-                        <link rel="shortcut icon" href="favicon.png">
-                <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-                <link rel="stylesheet" href="css/print.css" media="print">
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
         
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -37,7 +36,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -83,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/ollvm_deflatten.html"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li></ol></li><li class="chapter-item expanded "><a href="internals.html"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/ollvm_deflatten.html" class="active"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li></ol></li><li class="chapter-item expanded "><a href="../internals.html"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -115,7 +114,7 @@
                     <h1 class="menu-title">GhidraCraft Book</h1>
 
                     <div class="right-buttons">
-                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                                                                         
@@ -144,14 +143,52 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="document-not-found-404"><a class="header" href="#document-not-found-404">Document not found (404)</a></h1>
-<p>This URL is invalid, sorry. Please use the navigation bar or search to continue.</p>
+                        <h1 id="ollvm-deflatten-script"><a class="header" href="#ollvm-deflatten-script">OLLVM Deflatten Script</a></h1>
+<p><a href="https://github.com/obfuscator-llvm/obfuscator">OLLVM</a> is a commonly used compiler-level
+obfuscation technique.
+One of the core feature is called control flow flattenning which adjusts the basic blocks
+within a single function to make the decompiled result highly verbose.</p>
+<p>OLLVM works on different architectures as it reuses <a href="https://llvm.org/">LLVM</a> compiler
+framework which in turn works on different architectures.</p>
+<p>By using <a href="./pcode_patch.html">pcode patching feature</a>, we have achieved half-automatically
+OLLVM control flow flattenning deobfuscation.</p>
+<h2 id="usage"><a class="header" href="#usage">Usage</a></h2>
+<h3 id="step-1-find-the-script"><a class="header" href="#step-1-find-the-script">Step 1: find the script.</a></h3>
+<p>Open up the script manager, search for <code>ollvm_de_flattening.py</code> script.</p>
+<h3 id="step-2-find-the-initial-block-id-number-a-magic-number"><a class="header" href="#step-2-find-the-initial-block-id-number-a-magic-number">Step 2: find the initial block id number (a magic number)</a></h3>
+<p>For each program obfuscated with OLLVM control flow flattening, a bunches of magic numbers
+are used to indicate which block is to execute next.</p>
+<p>This step requires you to highlight out (by click mouse left-button on the number) the
+first magic number.</p>
+<p>Normally the magic number will appear above the beginning of the loop.</p>
+<p><img src="./img/ollvm_magic_number_choose.png" alt="ollvm_choose_magic number" /></p>
+<h3 id="step-3-run-the-script"><a class="header" href="#step-3-run-the-script">Step 3: run the script</a></h3>
+<p>By double clicking the script, it should deobfuscate the control flow flatening.</p>
+<h2 id="supported-architectures"><a class="header" href="#supported-architectures">Supported Architectures</a></h2>
+<table><thead><tr><th>Arch Names</th><th>Support</th></tr></thead><tbody>
+<tr><td>x86</td><td>✔️</td></tr>
+<tr><td>x86-64</td><td>✔️</td></tr>
+<tr><td>arm</td><td>✔️</td></tr>
+<tr><td>aarch64</td><td>✔️</td></tr>
+<tr><td>mips64</td><td>✔️</td></tr>
+<tr><td>ppc64-le</td><td>✔️</td></tr>
+</tbody></table>
+<h2 id="note"><a class="header" href="#note">Note</a></h2>
+<ul>
+<li>This only works for OLLVM, not any control flow flattening scheme.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../ghidracraft_changes/pcode_patch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
                         
+                                                    <a rel="next" href="../ghidracraft_changes/shorter_names.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -159,7 +196,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../ghidracraft_changes/pcode_patch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
                 
+                                    <a rel="next" href="../ghidracraft_changes/shorter_names.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>
@@ -172,13 +215,13 @@
         </script>
         
         
-                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
