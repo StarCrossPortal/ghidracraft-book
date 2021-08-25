@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/ollvm_deflatten.html"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li></ol></li><li class="chapter-item expanded "><a href="internals.html"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/ollvm_deflatten.html"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/decompiler_improves.html"><strong aria-hidden="true">3.6.</strong> Decompiler Improvements</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/decompiler_mix_rust.html"><strong aria-hidden="true">3.7.</strong> Refactor: mix Rust into the decompiler</a></li></ol></li><li class="chapter-item expanded "><a href="internals.html"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -343,6 +343,48 @@ first magic number.</p>
 <p>By default, Ghidra has a verbose name generated for decompiled code.</p>
 <p>To use shorter names, you can enable this by: <code>Edit -&gt; Tool Options -&gt; Decompiler -&gt; Analysis -&gt; Short variable names</code>.</p>
 <p>This option is not enabled by default.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="decompiler-improvements"><a class="header" href="#decompiler-improvements">Decompiler Improvements</a></h1>
+<p>We have done some minor decompiler improvements.
+Note that some of the &quot;improvements&quot; are possible to break things. If so, please <a href="https://github.com/StarCrossPortal/ghidracraft/issues">fire an issue</a>.</p>
+<h2 id="concat-rewrite-rule"><a class="header" href="#concat-rewrite-rule"><code>CONCAT</code> rewrite rule</a></h2>
+<p>A rule is added to rewrite <code>CONCAT</code> magic function into more understandable operations.</p>
+<p>TODO: show case</p>
+<h2 id="float-display-in-decompiler-panel"><a class="header" href="#float-display-in-decompiler-panel">Float display in decompiler panel</a></h2>
+<p>Now right click on a constant in decompiler panel, it is possible to convert to float and double now.</p>
+<p>Before:</p>
+<p><img src="ghidracraft_changes/./img/decompiler_float_display_before.png" alt="Float Display Before" /></p>
+<p>After:</p>
+<p><img src="ghidracraft_changes/./img/decompiler_float_display_after.png" alt="Float Display After" /></p>
+<h2 id="add-parenthesis-around-bit-wise-operations"><a class="header" href="#add-parenthesis-around-bit-wise-operations">Add parenthesis around bit-wise operations</a></h2>
+<p>Before this, bit-wise operations mixed with normal add/sub like arithmatic operations can be a little bit hard to understand due to C's weird priority.</p>
+<p>TODO: show case</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="refactor-mix-rust-into-the-decompiler"><a class="header" href="#refactor-mix-rust-into-the-decompiler">Refactor: mix Rust into the decompiler</a></h1>
+<p>This is not intended to be read by end-user. As this &quot;feature&quot; does not introduce any end-user usable thing.</p>
+<h2 id="problem"><a class="header" href="#problem">Problem</a></h2>
+<p>Current Ghidra decompiler is old, and uses some bad practice (example like <code>using namespace std;</code>). Raw pointers and references are used without quite a guideline.</p>
+<p>To fix this problem, we decided to introduce Rust into the decompiler architecture.</p>
+<h2 id="how"><a class="header" href="#how">How</a></h2>
+<p>This will be a very long process.
+There are just too much code in the decompiler.
+And they are all very complex.</p>
+<p>So, we will do this in a long run.</p>
+<h3 id="stage-1-introduce-rust"><a class="header" href="#stage-1-introduce-rust">Stage 1: introduce Rust</a></h3>
+<p>This is now checked. By using the <a href="https://cxx.rs/">cxx</a> crate, we are able to connet C++ world and Rust world.
+A <a href="https://github.com/StarCrossPortal/ghidracraft/blob/master/Ghidra/Features/Decompiler/src/decompile/build.rs">build script</a> is written to automate the building part.</p>
+<h3 id="stage-2-abstract-away-api"><a class="header" href="#stage-2-abstract-away-api">Stage 2: abstract away API</a></h3>
+<p>There are many objects used in the decompiler.
+To abstract away current implementation, a new crate called <a href="https://github.com/StarCrossPortal/pcodecraft">pcodecraft</a> is designed to provide the traits the original decompiler C++ side should implement.</p>
+<p>In this way, we are able to re-write some of the algorithms in Rust gradually.
+During the re-write, if the algorithm requires any API of the original decompiler, it should refer to the pcodecraft.</p>
+<p>The pcodecraft API should be implemented in the original decompiler Rust-side code. Then we are able to integrate the re-written Rust algorithms into this project.</p>
+<p>Currently, pcodecraft is not yet finished. Or, so to say, just started.</p>
+<h3 id="stage-3-gradually-re-write-some-of-the-algorithms"><a class="header" href="#stage-3-gradually-re-write-some-of-the-algorithms">Stage 3: gradually re-write some of the algorithms</a></h3>
+<p>This is the most complicated part. We need to re-write the algorithms one by one, in a form of crates.</p>
+<p>To be short, in this phase, we are gonna implement every algorithms used by the decompiler, one after one, in Rust crate.
+If any API is needed to fulfill the final goal, use pcodecraft.
+The pcodecraft should do the rest, provide the actual implementation needed, once integrated.</p>
+<p>In this phase, we are also able to adjust the algorithms our way. Or if you like, to experiment your own algorithms.</p>
+<p>That is the best part of this arrangement.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ghidra-internals"><a class="header" href="#ghidra-internals">Ghidra Internals</a></h1>
 <p>TODO</p>
 

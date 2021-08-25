@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Ghidra Internals - GhidraCraft Book</title>
+        <title>Decompiler Improvements - GhidraCraft Book</title>
                 
 
         <!-- Custom HTML head -->
@@ -14,21 +14,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-                <link rel="icon" href="favicon.svg">
-                        <link rel="shortcut icon" href="favicon.png">
-                <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-                <link rel="stylesheet" href="css/print.css" media="print">
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
         
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-                <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
         
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
         
@@ -36,7 +36,7 @@
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/ollvm_deflatten.html"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/decompiler_improves.html"><strong aria-hidden="true">3.6.</strong> Decompiler Improvements</a></li><li class="chapter-item expanded "><a href="ghidracraft_changes/decompiler_mix_rust.html"><strong aria-hidden="true">3.7.</strong> Refactor: mix Rust into the decompiler</a></li></ol></li><li class="chapter-item expanded "><a href="internals.html" class="active"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../vanilla_ghidra.html"><strong aria-hidden="true">2.</strong> Vanilla Ghidra</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes.html"><strong aria-hidden="true">3.</strong> Ghidracraft changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../ghidracraft_changes/dark_theme.html"><strong aria-hidden="true">3.1.</strong> Dark Theme</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/color_configuration.html"><strong aria-hidden="true">3.2.</strong> Color Configuration</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/pcode_patch.html"><strong aria-hidden="true">3.3.</strong> Pcode Patch</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/ollvm_deflatten.html"><strong aria-hidden="true">3.4.</strong> OLLVM Deflatten Script</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/shorter_names.html"><strong aria-hidden="true">3.5.</strong> Shorter Decompiled Variable Names</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/decompiler_improves.html" class="active"><strong aria-hidden="true">3.6.</strong> Decompiler Improvements</a></li><li class="chapter-item expanded "><a href="../ghidracraft_changes/decompiler_mix_rust.html"><strong aria-hidden="true">3.7.</strong> Refactor: mix Rust into the decompiler</a></li></ol></li><li class="chapter-item expanded "><a href="../internals.html"><strong aria-hidden="true">4.</strong> Ghidra Internals</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -114,7 +114,7 @@
                     <h1 class="menu-title">GhidraCraft Book</h1>
 
                     <div class="right-buttons">
-                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
                                                                         
@@ -143,17 +143,33 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="ghidra-internals"><a class="header" href="#ghidra-internals">Ghidra Internals</a></h1>
-<p>TODO</p>
+                        <h1 id="decompiler-improvements"><a class="header" href="#decompiler-improvements">Decompiler Improvements</a></h1>
+<p>We have done some minor decompiler improvements.
+Note that some of the &quot;improvements&quot; are possible to break things. If so, please <a href="https://github.com/StarCrossPortal/ghidracraft/issues">fire an issue</a>.</p>
+<h2 id="concat-rewrite-rule"><a class="header" href="#concat-rewrite-rule"><code>CONCAT</code> rewrite rule</a></h2>
+<p>A rule is added to rewrite <code>CONCAT</code> magic function into more understandable operations.</p>
+<p>TODO: show case</p>
+<h2 id="float-display-in-decompiler-panel"><a class="header" href="#float-display-in-decompiler-panel">Float display in decompiler panel</a></h2>
+<p>Now right click on a constant in decompiler panel, it is possible to convert to float and double now.</p>
+<p>Before:</p>
+<p><img src="./img/decompiler_float_display_before.png" alt="Float Display Before" /></p>
+<p>After:</p>
+<p><img src="./img/decompiler_float_display_after.png" alt="Float Display After" /></p>
+<h2 id="add-parenthesis-around-bit-wise-operations"><a class="header" href="#add-parenthesis-around-bit-wise-operations">Add parenthesis around bit-wise operations</a></h2>
+<p>Before this, bit-wise operations mixed with normal add/sub like arithmatic operations can be a little bit hard to understand due to C's weird priority.</p>
+<p>TODO: show case</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="ghidracraft_changes/decompiler_mix_rust.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../ghidracraft_changes/shorter_names.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
+                                                    <a rel="next" href="../ghidracraft_changes/decompiler_mix_rust.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -161,10 +177,13 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="ghidracraft_changes/decompiler_mix_rust.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../ghidracraft_changes/shorter_names.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
+                                    <a rel="next" href="../ghidracraft_changes/decompiler_mix_rust.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
                             </nav>
 
         </div>
@@ -177,13 +196,13 @@
         </script>
         
         
-                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
         
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
         
