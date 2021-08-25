@@ -1,5 +1,7 @@
 # Introduction
 
+![logo](./img/logo.png)
+
 This book is part of the [bincraft](https://github.com/StarCrossPortal/bincraft) project.
 In this book, we will be talking about the [ghidracraft](https://github.com/StarCrossPortal/ghidracraft) project, which is a forked version of Ghidra.
 
